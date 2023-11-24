@@ -1,5 +1,7 @@
 ---
 import Nav from '../components/Nav.astro'
+
+const posts = await Astro.glob('./blog/*.md') 
 ---
 
 <!DOCTYPE html>
@@ -18,5 +20,6 @@ import Nav from '../components/Nav.astro'
 		<a href="/blog/post-2">post 2</a>
 		<a href="/blog/post-3">post 3</a>
 	</nav>
+	{posts.map(post=><div><a href={post.url}>{post.frontmatter.title}</a></div>)}
 </body>
 </html>
